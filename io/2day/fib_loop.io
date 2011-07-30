@@ -1,6 +1,6 @@
 
-List last  := method(call target reverse at(0))
-List last2 := method(call target reverse at(1))
+List last  := method(self reverse at(0))
+List last2 := method(self reverse at(1))
 
 fib := method(n,
   fib_list := list(0, 1)
