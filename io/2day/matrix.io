@@ -6,8 +6,6 @@ List fill := method(times, value,
 Matrix := Object clone
 Matrix dim := method(x, y,
   self _list := List clone
-  self _x := x
-  self _y := y
   for(i, 1, y, self _list push(list() fill(x, 0)))
 )
 Matrix set := method(x, y, value,
@@ -15,6 +13,12 @@ Matrix set := method(x, y, value,
 )
 Matrix get := method(x, y,
   self _list at(y) at(x)
+)
+Matrix x := method(
+  self _list at(0) size
+)
+Matrix y := method(
+  self _list size
 )
 
 m := Matrix clone
@@ -28,13 +32,13 @@ m set(4, 0, 5)
 m _list println
 m get(4, 2) println
 
-# -----------------
+" ----------------- " println
 
 Matrix transpose := method(
   new_m := Matrix clone
-  new_m dim(self _y, self _x)
-  for(i, 0, self _y-1,
-    for(j, 0, self _x-1,
+  new_m dim(self y, self x)
+  for(i, 0, self y-1,
+    for(j, 0, self x-1,
       new_m set(i, j, self get(j, i))
     )
   )
