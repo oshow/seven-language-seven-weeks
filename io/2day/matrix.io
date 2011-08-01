@@ -48,3 +48,18 @@ Matrix transpose := method(
 m transpose _list println
 (m get(4, 2) == m transpose get(2, 4)) println
 
+" ----------------- " println
+
+f := File with("foo.txt") remove openForUpdating
+m _list foreach(l,
+  f write(l join(" "), "\n")
+)
+f close
+
+m2 := Matrix clone
+f := File with("foo.txt")
+ary := f readLines map(split)
+m2 dim(ary size, ary at(0) size)
+m2 _list = ary
+m2 _list println
+f close
